@@ -18,7 +18,6 @@ char **tokenise(char *str)
     char *token = strtok(copy, SEA_PARSER_DELIMITERS);
     buf = append(buf, i++, token);
     while (token != NULL) {
-        printf("%s\n", token);
         token = strtok(NULL, SEA_PARSER_DELIMITERS);
         buf = append(buf, i++, token);
     }
