@@ -1,3 +1,7 @@
+#include "io.h"
+#include "parser.h"
+#include "exec.h"
+
 #include <stdio.h>
 
 #define SEA_PROGRAM_NAME "sea"
@@ -17,6 +21,15 @@ void print_help_message(void)
 int main(int argc, char *argv[])
 {
     print_help_message();
+    while (1) {
+        char *cmd = read_line("> ");
+        char **tokens = tokenise(cmd);
+        int exec_status = exec(tokens);
+        if (exec_status > 0) {
+            printf("%d\n", exec_status);
+            return exec_status;
+        }
+    }
 
     return 0;
 }

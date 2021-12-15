@@ -23,5 +23,5 @@ int exec(char **args)
         } while(!WIFEXITED(status) && !WIFSIGNALED(status));
     }
 
-    return status;
+    return WTERMSIG(status);
 }
