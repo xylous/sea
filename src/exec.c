@@ -1,4 +1,5 @@
 #include "exec.h"
+#include "builtins.h"
 
 #include <unistd.h>
 #include <stdio.h>
@@ -7,6 +8,11 @@
 
 int exec(char **args)
 {
+    int builtinID = is_builtin(args);
+    if (builtinID != -1) {
+        return exec_builtin(builtinID, args);
+    }
+
     pid_t pid, wpid;
     int status;
 
