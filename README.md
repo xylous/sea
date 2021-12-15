@@ -4,25 +4,34 @@ A shell. Seashell. Seash?. Written in C
 
 For a detailed history of the project, check [the Changelog](./Changelog.md)
 
-<!--
 ## Getting started
 
 ### Requirements
 
-(What other software does this project depend on?)
+For building:
+
+- GNU Make
+- a C compiler, preferably GCC
 
 ### Installation
 
-(How can anyone get this software running, provided they meet the requirements?)
+Clone this repository locally, `cd` into the newly downloaded directory and run
+`make`:
+
+```
+git clone https://github.com/xylous/sea.git sea
+cd sea
+make
+```
+
+And voilà, a binary called `sea` should appear in that directory. You could move
+it onto `$PATH` afterwards.
 
 ### Usage
 
-(How is this software used?)
-
-## Roadmap
-
-(What ideas would I like to be implemented in the future?)
--->
+To run, invoke it on the command line; for the time being, it takes no
+arguments. Running it starts an interactive session. You can press `Enter` or
+`Ctrl-D` to exit.
 
 ## Contributing
 
