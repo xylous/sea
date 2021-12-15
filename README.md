@@ -33,6 +33,20 @@ To run, invoke it on the command line; for the time being, it takes no
 arguments. Running it starts an interactive session. You can press `Enter` or
 `Ctrl-D` to exit.
 
+## Roadmap
+
+- [ ] custom tokeniser (which can recognise `;`, `&&`, `||` etc)
+- [ ] parse expressions into AST
+- [ ] `if-then-else` expressions
+- [ ] `do-while` expressions
+- [ ] variable assignment/`let` expressions
+- [ ] `export` expressions
+- [ ] function definitions, function calls (+ `local` keyword for... local variables)
+- [ ] RC file (conform to XDG base spec)
+- [ ] custom aliases
+- [ ] customisable prompt
+- [ ] keep track of history
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to
