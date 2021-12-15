@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0 - 2021-12-15
+
+- add a builtin function "lookup table"
+- add two builtins, `cd` and `exit`
+- change the `exec` function to use builtins
+
 ## 0.3.0 - 2021-12-15
 
 - add an IO module, for taking input from stdin
