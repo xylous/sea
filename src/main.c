@@ -3,6 +3,7 @@
 #include "exec.h"
 
 #include <stdio.h>
+#include <string.h>
 
 #define SEA_PROGRAM_NAME "sea"
 #define SEA_PROGRAM_VERSION "0.0.0"
@@ -21,9 +22,13 @@ void print_help_message(void)
 int main(int argc, char *argv[])
 {
     print_help_message();
+
+    // TODO: fix Ctrl-D / EOF constant input
     while (1) {
         char *cmd = read_line("> ");
         char **tokens = tokenise(cmd);
+        if (!tokens[0])
+            continue;
         int exec_status = exec(tokens);
         if (exec_status > 0) {
             printf("%d\n", exec_status);

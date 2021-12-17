@@ -11,5 +11,8 @@ char *read_line(char *prompt)
     printf("%s", prompt);
     getline(&buf, &len, stdin);
 
+    buf = realloc(buf, (sizeof buf) * (len + 1));
+    buf[len] = '\n';
+
     return buf;
 }
