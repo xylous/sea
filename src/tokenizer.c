@@ -54,6 +54,11 @@ enum token_type type(char *p)
             return whitespace;
         case ';':
             return semicolon;
+        case '=':
+            if (*(p-1) && type(p-1) == string)
+                return assignment;
+            else
+                return string;
         default:
             return string;
     }

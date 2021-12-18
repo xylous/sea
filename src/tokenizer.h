@@ -2,9 +2,10 @@
 #define SEA_TOKENIZER_H
 
 enum token_type {
+    whitespace,
     string,
     semicolon,
-    whitespace,
+    assignment,
 };
 
 struct token {
