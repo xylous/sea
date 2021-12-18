@@ -1,5 +1,5 @@
 #include "io.h"
-#include "parser.h"
+#include "tokenizer.h"
 #include "exec.h"
 
 #include <stdio.h>
@@ -26,13 +26,9 @@ int main(int argc, char *argv[])
     // TODO: fix Ctrl-D / EOF constant input
     while (1) {
         char *cmd = read_line("> ");
-        char **tokens = tokenise(cmd);
-        if (!tokens[0])
-            continue;
-        int exec_status = exec(tokens);
-        if (exec_status > 0) {
-            printf("%d\n", exec_status);
-            return exec_status;
+        struct token **ts = tokenize(cmd);
+        for (int i = 0; ts[i] != NULL; i++) {
+            printf("type: %d, content: %s\n", ts[i]->type, ts[i]->content);
         }
     }
 
