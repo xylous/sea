@@ -12,6 +12,8 @@ enum token_type {
     square_paren,
     curly_paren,
     dollar_sign,
+    single_quote,
+    double_quote,
 };
 
 struct token {

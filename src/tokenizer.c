@@ -71,6 +71,10 @@ enum token_type type(char *p)
             return curly_paren;
         case '$':
             return dollar_sign;
+        case '\'':
+            return single_quote;
+        case '"':
+            return double_quote;
         default:
             return string;
     }
@@ -101,7 +105,9 @@ int should_be_one_char_token(struct token *t)
     if (t->type == round_paren
         || t->type == square_paren
         || t->type == curly_paren
-        || t->type == dollar_sign) {
+        || t->type == dollar_sign
+        || t->type == single_quote
+        || t->type == double_quote) {
         b = 1;
     }
     return b && strlen(t->content) == 1;
