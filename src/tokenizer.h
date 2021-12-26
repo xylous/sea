@@ -9,6 +9,7 @@ enum token_type {
     ampersand,
     vertical_bar,
     round_paren,
+    square_paren,
 };
 
 struct token {

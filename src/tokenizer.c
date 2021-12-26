@@ -67,6 +67,8 @@ enum token_type type(char *p)
             return vertical_bar;
         case '(': case ')':
             return round_paren;
+        case '[': case ']':
+            return square_paren;
         default:
             return string;
     }
@@ -94,7 +96,8 @@ void append_to_string(char **str, char *ch)
 int is_paren(struct token *t)
 {
     int b = 0;
-    if (t->type == round_paren) {
+    if (t->type == round_paren
+        || t->type == square_paren) {
         b = 1;
     }
     return b && strlen(t->content) == 1;
