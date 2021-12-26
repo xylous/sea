@@ -6,7 +6,7 @@
 #include <string.h>
 
 #define SEA_PROGRAM_NAME "sea"
-#define SEA_PROGRAM_VERSION "0.0.0"
+#define SEA_PROGRAM_VERSION "0.5.0"
 #define SEA_PROGRAM_AUTHOR "xylous"
 #define SEA_PROGRAM_EMAIL "xylous.e@gmail.com"
 

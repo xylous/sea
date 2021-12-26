@@ -35,7 +35,7 @@ arguments. Running it starts an interactive session. You can press `Enter` or
 
 ## Roadmap
 
-- [ ] custom tokeniser (which can recognise `;`, `&&`, `||` etc)
+- [x] custom tokeniser (which can recognise `;`, `&&`, `||` etc)
 - [ ] parse expressions into AST
 - [ ] `if-then-else` expressions
 - [ ] `do-while` expressions
