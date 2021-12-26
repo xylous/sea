@@ -59,6 +59,8 @@ enum token_type type(char *p)
                 return assignment;
             else
                 return string;
+        case '&':
+            return ampersand;
         default:
             return string;
     }

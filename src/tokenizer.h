@@ -6,6 +6,7 @@ enum token_type {
     string,
     semicolon,
     assignment,
+    ampersand,
 };
 
 struct token {
