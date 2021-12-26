@@ -7,7 +7,7 @@ struct token *new_token(enum token_type type);
 enum token_type type(char *p);
 void save_token(struct token ***buf, int length, struct token *t);
 void append_to_string(char **str, char *ch);
-int is_paren(struct token *t);
+int should_be_one_char_token(struct token *t);
 
 // Return a NULL-terminated list of tokens in the given string
 struct token **tokenize(char *str)
@@ -20,7 +20,7 @@ struct token **tokenize(char *str)
     for (char *ch = str; *ch != '\0'; ch++) {
         // if they're of the same type, then it's part of the same token
         // ...except if it's a parenthesis of any kind
-        if (type(ch) == tok->type && !is_paren(tok)) {
+        if (type(ch) == tok->type && !should_be_one_char_token(tok)) {
             append_to_string(&(tok->content), ch);
         } else { // different token; save current one into token buffer, even if it's a whitespace token
             save_token(&buf, buflen++, tok);
@@ -93,14 +93,15 @@ void append_to_string(char **str, char *ch)
     (*str)[len] = *ch;
 }
 
-// Determine if the given token is of a parenthesis type and has exactly one
-// character in it
-int is_paren(struct token *t)
+// Determine if the given token is of a parenthesis type or a dollar sign type
+// and has exactly one character in it
+int should_be_one_char_token(struct token *t)
 {
     int b = 0;
     if (t->type == round_paren
         || t->type == square_paren
-        || t->type == curly_paren) {
+        || t->type == curly_paren
+        || t->type == dollar_sign) {
         b = 1;
     }
     return b && strlen(t->content) == 1;
