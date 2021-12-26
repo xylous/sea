@@ -61,6 +61,8 @@ enum token_type type(char *p)
                 return string;
         case '&':
             return ampersand;
+        case '|':
+            return vertical_bar;
         default:
             return string;
     }
