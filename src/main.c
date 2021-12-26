@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         char *cmd = read_line("> ");
         struct token **ts = tokenize(cmd);
         for (int i = 0; ts[i] != NULL; i++) {
-            printf("type: %d, content: %s\n", ts[i]->type, ts[i]->content);
+            printf("type: %d, content: '%s'\n", ts[i]->type, ts[i]->content);
         }
     }
 

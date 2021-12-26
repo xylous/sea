@@ -19,13 +19,11 @@ struct token **tokenize(char *str)
 
     for (char *ch = str; *ch != '\0'; ch++) {
         // if they're of the same type, then it's part of the same token
-        // ...except if it's a round parenthesis
+        // ...except if it's a parenthesis of any kind
         if (type(ch) == tok->type && !is_paren(tok)) {
             append_to_string(&(tok->content), ch);
-        } else { // different token; save current one into token buffer
-            if (tok->type != whitespace) {
-                save_token(&buf, buflen++, tok);
-            }
+        } else { // different token; save current one into token buffer, even if it's a whitespace token
+            save_token(&buf, buflen++, tok);
             tok = new_token(type(ch--));
             // we need to decrement because otherwise it'd skip the current
             // character (especially with multiple whitespace characters) which
