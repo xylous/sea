@@ -8,6 +8,7 @@ enum token_type {
     assignment,
     ampersand,
     vertical_bar,
+    round_paren,
 };
 
 struct token {

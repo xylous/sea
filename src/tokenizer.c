@@ -7,6 +7,7 @@ struct token *new_token(enum token_type type);
 enum token_type type(char *p);
 void save_token(struct token ***buf, int length, struct token *t);
 void append_to_string(char **str, char *ch);
+int is_paren(struct token *t);
 
 // Return a NULL-terminated list of tokens in the given string
 struct token **tokenize(char *str)
@@ -18,7 +19,8 @@ struct token **tokenize(char *str)
 
     for (char *ch = str; *ch != '\0'; ch++) {
         // if they're of the same type, then it's part of the same token
-        if (type(ch) == tok->type) {
+        // ...except if it's a round parenthesis
+        if (type(ch) == tok->type && !is_paren(tok)) {
             append_to_string(&(tok->content), ch);
         } else { // different token; save current one into token buffer
             if (tok->type != whitespace) {
@@ -63,6 +65,8 @@ enum token_type type(char *p)
             return ampersand;
         case '|':
             return vertical_bar;
+        case '(': case ')':
+            return round_paren;
         default:
             return string;
     }
@@ -83,4 +87,15 @@ void append_to_string(char **str, char *ch)
     int len = strlen(*str);
     *str = realloc(*str, sizeof(*str) * (len + 1));
     (*str)[len] = *ch;
+}
+
+// Determine if the given token is of a parenthesis type and has exactly one
+// character in it
+int is_paren(struct token *t)
+{
+    int b = 0;
+    if (t->type == round_paren) {
+        b = 1;
+    }
+    return b && strlen(t->content) == 1;
 }
