@@ -69,6 +69,8 @@ enum token_type type(char *p)
             return round_paren;
         case '[': case ']':
             return square_paren;
+        case '{': case '}':
+            return curly_paren;
         default:
             return string;
     }
@@ -97,7 +99,8 @@ int is_paren(struct token *t)
 {
     int b = 0;
     if (t->type == round_paren
-        || t->type == square_paren) {
+        || t->type == square_paren
+        || t->type == curly_paren) {
         b = 1;
     }
     return b && strlen(t->content) == 1;

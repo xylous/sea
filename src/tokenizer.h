@@ -10,6 +10,7 @@ enum token_type {
     vertical_bar,
     round_paren,
     square_paren,
+    curly_paren,
 };
 
 struct token {
