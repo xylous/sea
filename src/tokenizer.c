@@ -71,6 +71,8 @@ enum token_type type(char *p)
             return square_paren;
         case '{': case '}':
             return curly_paren;
+        case '$':
+            return dollar_sign;
         default:
             return string;
     }
